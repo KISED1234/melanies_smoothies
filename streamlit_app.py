@@ -3,7 +3,6 @@
 # Import python packages, these are always first in code
 import streamlit as st
 import os
-python -m pip install requests
 import requests
 
 #load get active session command, without this get_active_session will not run
