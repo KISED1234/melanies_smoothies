@@ -5,9 +5,12 @@ import streamlit as st
 import os
 
 #load get active session command, without this get_active_session will not run
-from snowflake.snowpark.context import get_active_session
+#from snowflake.snowpark.context import get_active_session --only required in Snowflake not github
 # ONLY IN WAREHOUSE RUNTIMES
-session = get_active_session()
+#added cnx line for Github
+cnx = st.connection ("snowflake")
+# session = get_active_session() #amended to cnx as per below for Github
+session = cnx.session ()
 session.sql("SELECT 1").collect()
 
 #To use a Snowpark column function named `col`, we need to import it into our app. We’ll place the import statement close to where we plan to use it. This makes it easier for beginners to understand why it was imported and how it is used. In a later lab, we’ll move it up with other import statements to demonstrate better code organization.
