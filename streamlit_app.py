@@ -3,6 +3,7 @@
 # Import python packages, these are always first in code
 import streamlit as st
 import os
+import requests
 
 #load get active session command, without this get_active_session will not run
 #from snowflake.snowpark.context import get_active_session --only required in Snowflake not github
@@ -103,8 +104,7 @@ if ingredients_list:
         session.sql(my_insert_stmt).collect()
         st.success('Your Smoothie is ordered, ' + name_on_order, icon="✅")
 
-import requests  
 smoothiefroot_response = requests.get("(https://my.smoothiefroot.com/api/fruit/watermelon)")  
-st.text(smoothiefroot_response)
+st.text(smoothiefroot_response).json())
 
         
