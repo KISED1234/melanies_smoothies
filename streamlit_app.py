@@ -86,6 +86,13 @@ if ingredients_list:
         #+= means add this to what is already in the variable. Each time the for loop is repeated a new fruit name is appended to the existing string
         #+ ' ' adds space character after each fruit chosen i.e. each for loop
         ingredients_string += fruit_chosen + ' '
+        #add search_on function use loc in pandas. Loc stands for location. I.e. go to location within []
+        #in pd_df the FRUIT_NAME column use the fruit chosen to get values from the search_on column
+        #0 gives the first row
+        search_on=pd_df.loc[pd_df['FRUIT_NAME'] == fruit_chosen, 'SEARCH_ON'].iloc[0]
+        st.write('The search value for ', fruit_chosen,' is ', search_on, '.')
+
+      
         st.subheader(fruit_chosen + ' Nutrition Information')
       #Amend API call from actual fruit to variable like fruit_chosen to show specifc information in table of app. Speech marks only around api call not variable
         smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/" +fruit_chosen)  
