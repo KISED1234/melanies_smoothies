@@ -93,8 +93,9 @@ if ingredients_list:
 
       
         st.subheader(fruit_chosen + ' Nutrition Information')
-      #Amend API call from actual fruit to variable like fruit_chosen to show specifc information in table of app. Speech marks only around api call not variable
-        smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/" +fruit_chosen)  
+       #Amend API call from actual fruit to variable like fruit_chosen to show specifc information in table of app. Speech marks only around api call not variable
+       #Add f infront of speech mark in url then {search_on} to add search on function used above
+        smoothiefroot_response = requests.get(f"https://my.smoothiefroot.com/api/fruit/"{search_on})  
         # data = (smoothiefroot_response).json()
         # st.json(data)
         sf_df = st.dataframe (data = smoothiefroot_response.json(), use_container_width=True)
