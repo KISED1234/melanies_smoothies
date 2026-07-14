@@ -79,6 +79,10 @@ if ingredients_list:
         #+= means add this to what is already in the variable. Each time the for loop is repeated a new fruit name is appended to the existing string
         #+ ' ' adds space character after each fruit chosen i.e. each for loop
         ingredients_string += fruit_chosen + ' '
+        smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")  
+        # data = (smoothiefroot_response).json()
+        # st.json(data)
+        sf_df = st.dataframe (data = smoothiefroot_response.json(), use_container_width=True)
 
     #This should be part of the IF block but not the FOR Loop
     #st.write (ingredients_string)
@@ -104,9 +108,6 @@ if ingredients_list:
         session.sql(my_insert_stmt).collect()
         st.success('Your Smoothie is ordered, ' + name_on_order, icon="✅")
 
-smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")  
-# data = (smoothiefroot_response).json()
-# st.json(data)
-sf_df = st.dataframe (data = smoothiefroot_response.json(), use_container_width=True)
+
 
         
