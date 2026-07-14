@@ -4,6 +4,7 @@
 import streamlit as st
 import os
 import requests
+import pandas
 
 #load get active session command, without this get_active_session will not run
 #from snowflake.snowpark.context import get_active_session --only required in Snowflake not github
