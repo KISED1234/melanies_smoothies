@@ -45,8 +45,13 @@ st.write("The name on your Smoothie will be", name_on_order)
 #To show entire table remove the .select(col) after the session.table table name. Otherwise the select.col can be used after the session.table to show a specific column from a Snowflake table
 #session = get_active_session() #turned off as this is overwritten cnx session above
 my_dataframe = session.table("smoothies.public.fruit_options").select(col('FRUIT_NAME'),col('SEARCH_ON'))
+#below is only required for displaying table within app itself. Add st.stop () if check is required at this stage
+#st.dataframe(data=my_dataframe, use_container_width=True)
+
+#Convert the Snowpark dataframe above to a Pandas pyhton dataframe so we can use the LOC function
+pd_df = my_dataframe.to_pandas()
 #below is only required for displaying table within app itself
-st.dataframe(data=my_dataframe, use_container_width=True)
+st.dataframe(pd_df)
 st.stop()
 
 # Multi select option as defined in https://docs.streamlit.io/develop/api-reference/widgets/st.multiselect. Also includes select all by default. My_dataframe picks up the above definition as defined by a Snowflake table column
