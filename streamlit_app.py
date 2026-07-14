@@ -79,7 +79,9 @@ if ingredients_list:
         #+= means add this to what is already in the variable. Each time the for loop is repeated a new fruit name is appended to the existing string
         #+ ' ' adds space character after each fruit chosen i.e. each for loop
         ingredients_string += fruit_chosen + ' '
-        smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")  
+        st.subheader(fruit_chosen + ' Nutrition Information')
+      #Amend API call from actual fruit to variable like fruit_chosen to show specifc information in table of app
+        smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/" +fruit_chosen")  
         # data = (smoothiefroot_response).json()
         # st.json(data)
         sf_df = st.dataframe (data = smoothiefroot_response.json(), use_container_width=True)
