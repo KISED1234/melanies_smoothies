@@ -51,7 +51,7 @@ my_dataframe = session.table("smoothies.public.fruit_options").select(col('FRUIT
 #Convert the Snowpark dataframe above to a Pandas pyhton dataframe so we can use the LOC function
 pd_df = my_dataframe.to_pandas()
 #below is only required for displaying table within app itself
-st.dataframe(pd_df)
+#st.dataframe(pd_df)
 
 # Multi select option as defined in https://docs.streamlit.io/develop/api-reference/widgets/st.multiselect. Also includes select all by default. My_dataframe picks up the above definition as defined by a Snowflake table column
 #ingredients is a variable and the data type is a list
