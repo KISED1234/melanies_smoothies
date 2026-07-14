@@ -43,9 +43,10 @@ st.write("The name on your Smoothie will be", name_on_order)
 #Load Snowflake table into app. This will only work if app has been deployed to Snowflake. https://discuss.streamlit.io/t/nameerror-name-get-active-session-is-not-defined/79970/2. This also requires the from statement under #load get active session (above) from statement as referenced here: https://docs.snowflake.com/en/developer-guide/streamlit/app-development/secrets-and-configuration
 #To show entire table remove the .select(col) after the session.table table name. Otherwise the select.col can be used after the session.table to show a specific column from a Snowflake table
 #session = get_active_session() #turned off as this is overwritten cnx session above
-my_dataframe = session.table("smoothies.public.fruit_options").select(col('FRUIT_NAME'))
+my_dataframe = session.table("smoothies.public.fruit_options").select(col('FRUIT_NAME'),col('SEARCH_ON'))
 #below is only required for displaying table within app itself
-#st.dataframe(data=my_dataframe, use_container_width=True)
+st.dataframe(data=my_dataframe, use_container_width=True)
+st.stop()
 
 # Multi select option as defined in https://docs.streamlit.io/develop/api-reference/widgets/st.multiselect. Also includes select all by default. My_dataframe picks up the above definition as defined by a Snowflake table column
 #ingredients is a variable and the data type is a list
